@@ -7,12 +7,15 @@ const timeText = document.getElementById("time-txt");
 
 const tick = () => {
     time += 1;
-    const centiseconds = (time % 100).toString().padStart(2, "0");
-    const hours = Math.floor(time / (60 * 60 * 100)).toString().padStart(2, "0");
-    const minutes = Math.floor(time / (60 * 100)).toString().padStart(2, "0");
-    const seconds = Math.floor(time / 100).toString().padStart(2, "0");
 
-    timeText.innerText = `${hours}:${minutes}:${seconds}.${centiseconds}`;
+    const hours = Math.floor(time / (60 * 60 * 100));
+    const totalMinutes = Math.floor(time / (60 * 100));
+    const minutes = totalMinutes % 60;
+    const totalSeconds = Math.floor(time / 100);
+    const seconds = totalSeconds % 60;
+    const centiseconds = time % 100; 
+
+    timeText.innerText = `${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}.${centiseconds.toString().padStart(2, "0")}`;
 };
 
 document.getElementById("start-btn").addEventListener('click', () => {

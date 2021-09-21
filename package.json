@@ -5,11 +5,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --mode=development"
-   },
+  },
   "repository": "https://github.com/willburr/willburr.github.io",
   "author": "Will Burr <williamburr98@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "bootstrap": "^5.1.1",
     "lodash": "^4.17.21"
   },
   "devDependencies": {
