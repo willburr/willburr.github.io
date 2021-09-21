@@ -1,13 +1,7 @@
-import _ from "lodash";
-
 var timer; 
 var time = 0;
 
-const timeText = document.getElementById("time-txt");
-
-const tick = () => {
-    time += 1;
-
+const displayTime = () => {
     const hours = Math.floor(time / (60 * 60 * 100));
     const totalMinutes = Math.floor(time / (60 * 100));
     const minutes = totalMinutes % 60;
@@ -15,20 +9,34 @@ const tick = () => {
     const seconds = totalSeconds % 60;
     const centiseconds = time % 100; 
 
-    timeText.innerText = `${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}.${centiseconds.toString().padStart(2, "0")}`;
+    $('#time-txt').text(`${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}.${centiseconds.toString().padStart(2, "0")}`);
+}
+
+const tick = () => {
+    time += 1;
+    displayTime();
 };
 
-document.getElementById("start-btn").addEventListener('click', () => {
-    // Start timer
-    if (!timer) {
+// Handle menu 
+$('.menu .item')
+  .tab()
+;
+
+
+$('#toggle-btn').on('click', function(){
+    if (timer) {
+        // Stop timer
+        clearInterval(timer);
+        timer = null;
+        $(this).html("Start");
+    } else {
+        // Start timer
         timer = setInterval(tick, 10);
+        $(this).html("Stop");
     }
 });
 
-document.getElementById("end-btn").addEventListener('click', () => {
-    // Stop if possible
-    if (timer) {
-        clearInterval(timer);
-        timer = null;
-    }
+$('#reset-btn').on('click', function() {
+    time = 0;
+    displayTime();
 });

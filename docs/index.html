@@ -1,9 +1,33 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="semantic/semantic.min.css">
+        <script src="semantic/semantic.min.js"></script>
+    </head>
     <body>
-        <button id="start-btn">Start</button>
-        <button id="end-btn">Stop</button>
-        <p id="time-txt">00:00:00.00</p>
+        <div style="margin: 20px">
+            <div class="ui top attached tabular menu">
+                <a class="item active" data-tab="one">Timer</a>
+                <a class="item" data-tab="two">Some words</a>
+                <a class="item" data-tab="three">A dog</a>
+            </div>
+            <div class="ui bottom attached tab segment active" data-tab="one">
+                <button id="toggle-btn" class="ui primary button active">Start</button>
+                <button id="reset-btn" class="ui button active">Reset</button>
+                <p style="margin-top: 10px;"><span id="time-txt" class="ui large text">00:00:00.00</span></p>
+            </div>
+            <div class="ui bottom attached tab segment" data-tab="two">
+                <p>
+                    Hello there
+                </p>
+              </div>
+              <div class="ui bottom attached tab segment" data-tab="three">
+                <p>
+                    <img class="ui small image" src="images/dog.jpg">
+                </p>
+              </div>
+        </div>
     </body>
     <script src="main.js"></script>
 </html>
